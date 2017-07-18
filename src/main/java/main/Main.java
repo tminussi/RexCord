@@ -21,6 +21,13 @@ public class Main {
             + "the correct directory.";
 
     /**
+     * Unexpected error
+     */
+    private static final String UNEXPECTED_ERROR =
+            "Unexpected error while loading RexCord."
+                    + "\nDid you insert a valid token?";
+
+    /**
      * Default Error Message
      */
     private static final String ERROR_MESSAGE
@@ -65,8 +72,7 @@ public class Main {
 
         } catch (DiscordException e2) { // Invalid token
             System.out.println(ERROR_MESSAGE);
-            System.out.println("Unexpected error while loading RexCord."
-                    + "\nDid you insert a valid token?");
+            System.out.println(UNEXPECTED_ERROR);
             System.out.println(TERMINATING_MESSAGE);
         }
 
