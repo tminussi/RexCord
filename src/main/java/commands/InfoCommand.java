@@ -8,7 +8,7 @@ package commands;
 import java.util.List;
 import sx.blah.discord.handle.impl.events.guild.channel.message.
         MessageReceivedEvent;
-import utils.BotUtils;
+import rexcord.RexCord;
 import utils.DiscordMarkdown;
 
 /**
@@ -52,7 +52,7 @@ public class InfoCommand implements BotCommand {
                     + DiscordMarkdown.italic(commands.get(i).
                             getCommandDescription());
         }
-        BotUtils.sendMessage(event.getChannel(), commandInformation);
+        RexCord.sendMessage(event.getChannel(), commandInformation);
     }
 
     /**

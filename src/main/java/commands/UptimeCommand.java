@@ -2,7 +2,7 @@ package commands;
 
 import sx.blah.discord.handle.impl.events.guild
         .channel.message.MessageReceivedEvent;
-import utils.BotUtils;
+import rexcord.RexCord;
 
 /**
  * Calculates how much time RexCord has been up
@@ -54,7 +54,7 @@ public class UptimeCommand implements BotCommand {
     public final void runCommand(MessageReceivedEvent event, String args) {
         long runtime = getUptimeInMilliseconds();
 
-        BotUtils.sendMessage(event.getChannel(),
+        RexCord.sendMessage(event.getChannel(),
                 getFormattedUptime(runtime));
     }
 
@@ -63,7 +63,7 @@ public class UptimeCommand implements BotCommand {
      * @return uptime of the Java virtual machine in milliseconds.
      */
     private long getUptimeInMilliseconds() {
-        return System.currentTimeMillis() - BotUtils.getStartTime();
+        return System.currentTimeMillis() - RexCord.getStartTime();
     }
 
     /**

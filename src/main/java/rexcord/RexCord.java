@@ -1,4 +1,4 @@
-package utils;
+package rexcord;
 
 import java.util.List;
 import sx.blah.discord.api.ClientBuilder;
@@ -14,7 +14,7 @@ import sx.blah.discord.util.MessageBuilder;
 /**
  * Contains important methods and variables for the Bot
  */
-public final class BotUtils {
+public final class RexCord {
 
     /**
      * Bot Client
@@ -45,15 +45,9 @@ public final class BotUtils {
     public static final String CONFIG_COMMENT = "#";
 
     /**
-     * Configuration's File Path
-     */
-    public static final String DEFAULT_CONFIG_PATH
-            = System.getProperty("user.dir") + "/config/config.cfg";
-
-    /**
      * Prevents class from being instantiated
      */
-    private BotUtils() {
+    private RexCord() {
 
     }
 
@@ -85,7 +79,7 @@ public final class BotUtils {
      * @param newToken new Bot Token to be set
      */
     public static void setBotToken(String newToken) {
-        BotUtils.botToken = newToken;
+        RexCord.botToken = newToken;
     }
 
     /**
@@ -94,7 +88,7 @@ public final class BotUtils {
      * @param bannedCommands String with the banned bot commands
      */
     public static void setBotBannedCommands(String bannedCommands) {
-        BotUtils.botBannedCommands = bannedCommands;
+        RexCord.botBannedCommands = bannedCommands;
     }
 
     /**
@@ -121,7 +115,7 @@ public final class BotUtils {
      * @param botPrefix new bot prefix
      */
     public static void setBotPrefix(String botPrefix) {
-        BotUtils.botPrefix = botPrefix;
+        RexCord.botPrefix = botPrefix;
     }
 
     /**
@@ -139,7 +133,7 @@ public final class BotUtils {
      * @param startTime system start time, in mm
      */
     public static void setStartTime(long startTime) {
-        BotUtils.startTime = startTime;
+        RexCord.startTime = startTime;
     }
 
     /**
@@ -200,7 +194,7 @@ public final class BotUtils {
                     .appendContent(message)
                     .send();
         } catch (DiscordException e) {
-            //Stills needs to be treated
+            //Still needs to be treated
             //This exception occurs when the content is blank (no content)
         }
     }

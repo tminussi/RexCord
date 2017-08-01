@@ -3,7 +3,7 @@ package commands;
 import sx.blah.discord.handle.impl.events.guild.channel.message
         .MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IUser;
-import utils.BotUtils;
+import rexcord.RexCord;
 import utils.DiscordMarkdown;
 
 /**
@@ -49,9 +49,9 @@ public class RequestCommand implements BotCommand {
      */
     @Override
     public final void runCommand(MessageReceivedEvent event, String args) {
-        BotUtils.sendMessageToUser(BotUtils.getClient().getApplicationOwner(),
+        RexCord.sendMessageToUser(RexCord.getClient().getApplicationOwner(),
                 buildMessage(event.getAuthor(), event.getMessage().getContent()
-                        .replaceAll(BotUtils.getBotPrefix(), "")
+                        .replaceAll(RexCord.getBotPrefix(), "")
                         .replaceAll(COMMAND_NAME, "")));
     }
 
@@ -66,7 +66,7 @@ public class RequestCommand implements BotCommand {
         return user.mention() + " just requested you something!\n"
                 + DiscordMarkdown
                         .boldItalic(message
-                                .replaceAll(BotUtils.getBotPrefix(), "")
+                                .replaceAll(RexCord.getBotPrefix(), "")
                                 .replaceAll(COMMAND_NAME, ""));
     }
 }

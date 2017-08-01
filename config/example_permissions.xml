@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rexcord>
+    <role_based_permissions>true</role_based_permissions>
+
+    <groups>
+        <group id = "admin">
+            <users>
+                <userID></userID>
+            </users>
+
+            <commands>
+                <command>*</command> <!-- All permissions set to admin -->
+            </commands>
+        </group>
+
+        <group id = "moderator">
+            <users>
+                <userID></userID>
+                <userID></userID>
+            </users>
+
+            <commands>
+                <command></command>
+                <command></command>
+                <command></command>
+                <command></command>
+                <command></command>
+            </commands>
+        </group>
+
+        <group id = "default">
+            <users>
+                <userID></userID>
+                <userID></userID>
+                <userID></userID>
+            </users>
+
+            <commands>
+                <command></command>
+                <command></command>
+            </commands>
+        </group>
+    </groups>
+</rexcord>

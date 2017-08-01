@@ -3,7 +3,7 @@ package commands;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message
         .MessageReceivedEvent;
-import utils.BotUtils;
+import rexcord.RexCord;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,11 +47,11 @@ public class CommandHandler {
             return;
         }
 
-        if (!received[0].startsWith(BotUtils.getBotPrefix())) {
+        if (!received[0].startsWith(RexCord.getBotPrefix())) {
             return;
         }
 
-        int numberOfCharsInPrefix = BotUtils.getBotPrefix().length();
+        int numberOfCharsInPrefix = RexCord.getBotPrefix().length();
 
         // Creates a substring of the received message without the bot's prefix
         String commandString = received[0].substring(numberOfCharsInPrefix);

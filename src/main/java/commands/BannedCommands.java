@@ -5,7 +5,7 @@
  */
 package commands;
 
-import utils.BotUtils;
+import rexcord.RexCord;
 
 /**
  * Class to check banned commands
@@ -19,8 +19,8 @@ public class BannedCommands {
      * @return true if command is banned, false if not
      */
     public static boolean isCommandBanned(String command) {
-        if (BotUtils.getBotBannedCommands() != null) {
-            String[] bannedCommands = BotUtils.getBotBannedCommands()
+        if (RexCord.getBotBannedCommands() != null) {
+            String[] bannedCommands = RexCord.getBotBannedCommands()
                     .split(",");
             for (int i = 0; i < bannedCommands.length; i++) {
                 if (bannedCommands[i].replaceFirst("\\s+", "").

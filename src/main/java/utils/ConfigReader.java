@@ -1,5 +1,7 @@
 package utils;
 
+import rexcord.RexCord;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -10,6 +12,12 @@ import java.util.Scanner;
 public class ConfigReader {
 
     /**
+     * Configuration's File Path
+     */
+    private static final String DEFAULT_CONFIG_PATH
+            = System.getProperty("user.dir") + "/config/config.cfg";
+
+    /**
      * Print this message when a field definition is empty
      */
     private static final String MISSING_DEFINITION =
@@ -18,21 +26,19 @@ public class ConfigReader {
     /**
      * Creates an instance of ConfigReader
      *
-     * @param configPath The default config file path
      * @throws FileNotFoundException in case doesnt find config file
      */
-    public ConfigReader(String configPath) throws FileNotFoundException {
-        readFile(configPath);
+    public ConfigReader() throws FileNotFoundException {
+        readFile();
     }
 
     /**
      * Reads config file and assigns each parameter value
      *
-     * @param configPath Configuration file's path
      * @throws FileNotFoundException if config file is not found
      */
-    private void readFile(String configPath) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File(configPath));
+    private void readFile() throws FileNotFoundException {
+        Scanner sc = new Scanner(new File(DEFAULT_CONFIG_PATH));
 
         int lineNumber = 0;
 
@@ -41,7 +47,7 @@ public class ConfigReader {
             lineNumber++;
 
             if (!currentLine.trim().equals("")
-                    && !currentLine.startsWith(BotUtils.CONFIG_COMMENT)) {
+                    && !currentLine.startsWith(RexCord.CONFIG_COMMENT)) {
 
                 String[] lineSplitted = currentLine.split("=");
                 String parameter = lineSplitted[0].trim();
@@ -56,12 +62,12 @@ public class ConfigReader {
 
                 switch (parameter) { //config parameters should be handled here
                     case "token":
-                        BotUtils.setBotToken(option);
+                        RexCord.setBotToken(option);
                         break;
                     case "banned_commands":
-                        BotUtils.setBotBannedCommands(option);
+                        RexCord.setBotBannedCommands(option);
                     case "prefix":
-                        BotUtils.setBotPrefix(option);
+                        RexCord.setBotPrefix(option);
                         break;
                     default:
                         break;

@@ -2,7 +2,7 @@ package commands;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.
         MessageReceivedEvent;
-import utils.BotUtils;
+import rexcord.RexCord;
 import utils.DiscordMarkdown;
 
 /**
@@ -53,7 +53,7 @@ public class AboutCommand implements BotCommand {
      */
     @Override
     public final void runCommand(MessageReceivedEvent event, String args) {
-        BotUtils.sendMessage(event.getChannel(), "RexCord is a Discord Bot "
+        RexCord.sendMessage(event.getChannel(), "RexCord is a Discord Bot "
                 + "written in java, that uses the popular interface "
                 + DiscordMarkdown.boldItalic("Discord4J") + " developed by "
                 + DiscordMarkdown.bold("austinv11") + "."

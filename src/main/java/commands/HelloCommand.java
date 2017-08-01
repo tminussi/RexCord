@@ -2,7 +2,7 @@ package commands;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.
         MessageReceivedEvent;
-import utils.BotUtils;
+import rexcord.RexCord;
 
 /**
  * Greets user
@@ -34,7 +34,7 @@ public class HelloCommand implements BotCommand {
     @Override
     public final void runCommand(MessageReceivedEvent event, String args)  {
         String messageToSend = "Hello, " + event.getAuthor().mention();
-        BotUtils.sendMessage(event.getChannel(), messageToSend);
+        RexCord.sendMessage(event.getChannel(), messageToSend);
     }
 
     /**

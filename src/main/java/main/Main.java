@@ -3,7 +3,7 @@ package main;
 import commands.CommandHandler;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
-import utils.BotUtils;
+import rexcord.RexCord;
 import utils.ConfigReader;
 import java.io.FileNotFoundException;
 
@@ -53,11 +53,11 @@ public class Main {
     public static void main(String[] args) {
 
         // Sets start time for uptime command
-        BotUtils.setStartTime(System.currentTimeMillis());
+        RexCord.setStartTime(System.currentTimeMillis());
 
         try {
             // Reads config file
-            new ConfigReader(BotUtils.DEFAULT_CONFIG_PATH);
+            new ConfigReader();
 
             startClient();
         } catch (FileNotFoundException e) { // Config File doesnt exist
@@ -83,7 +83,7 @@ public class Main {
      */
     private static void startClient() {
         // Creates a new Client
-        IDiscordClient client = BotUtils.createDiscordClient();
+        IDiscordClient client = RexCord.createDiscordClient();
 
         // Registers a new listener
         client.getDispatcher().registerListener(new CommandHandler());
