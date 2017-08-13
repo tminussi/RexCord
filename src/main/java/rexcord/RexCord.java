@@ -30,10 +30,12 @@ public final class RexCord {
      * Bot's user token
      */
     private static String botToken;
+
     /**
      * Bot's banned commands
      */
     private static String botBannedCommands;
+
     /**
      * Only messages starting with this prefix will be handled
      */
@@ -45,23 +47,15 @@ public final class RexCord {
     public static final String CONFIG_COMMENT = "#";
 
     /**
+     * Holds all RexCord groups from the permission file
+     */
+    private static List<RexGroup> rexGroups;
+
+    /**
      * Prevents class from being instantiated
      */
     private RexCord() {
 
-    }
-
-    /**
-     * Handles the creation of a Bot Client
-     *
-     * @return A new Bot Client
-     */
-    public static IDiscordClient createDiscordClient() {
-        client = new ClientBuilder()
-                .withToken(botToken)
-                .build();
-
-        return client;
     }
 
     /**
@@ -137,21 +131,6 @@ public final class RexCord {
     }
 
     /**
-     * Sends a text message
-     *
-     * @param channel text channel
-     * @param message message
-     */
-    public static void sendMessage(IChannel channel, String message) {
-        try {
-            channel.sendMessage(message);
-        } catch (DiscordException de) {
-            System.out.println("RexCord: Error sending message. Got error:");
-            de.printStackTrace();
-        }
-    }
-
-    /**
      * Returns the roles of a certain user that triggered an event
      *
      * @param event received event triggered by an user
@@ -159,6 +138,14 @@ public final class RexCord {
      */
     private static List<IRole> getRolesUserOnEvent(MessageReceivedEvent event) {
         return event.getGuild().getRolesForUser(event.getAuthor());
+    }
+
+    /**
+     * Sets list of RexGroups
+     * @param rexGroups list containing all RexGroups found in permissions.xml
+     */
+    public static void setRexGroups(List<RexGroup> rexGroups) {
+        RexCord.rexGroups = rexGroups;
     }
 
     /**
@@ -197,5 +184,33 @@ public final class RexCord {
             //Still needs to be treated
             //This exception occurs when the content is blank (no content)
         }
+    }
+
+    /**
+     * Sends a text message
+     *
+     * @param channel text channel
+     * @param message message
+     */
+    public static void sendMessage(IChannel channel, String message) {
+        try {
+            channel.sendMessage(message);
+        } catch (DiscordException de) {
+            System.out.println("RexCord: Error sending message. Got error:");
+            de.printStackTrace();
+        }
+    }
+
+    /**
+     * Handles the creation of a Bot Client
+     *
+     * @return A new Bot Client
+     */
+    public static IDiscordClient createDiscordClient() {
+        client = new ClientBuilder()
+                .withToken(botToken)
+                .build();
+
+        return client;
     }
 }

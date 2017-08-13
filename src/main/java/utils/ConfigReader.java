@@ -24,6 +24,14 @@ public class ConfigReader {
             "Error while loading config.cfg\n[Line %d] Missing %s definition";
 
     /**
+     * Config missing Error Message
+     */
+    private static final String CONFIG_NOT_FOUND_ERROR
+            = "RexCord: Config file not found. "
+            + "Make sure it is created and located in "
+            + "the correct directory.";
+
+    /**
      * Creates an instance of ConfigReader
      *
      * @throws FileNotFoundException in case doesnt find config file
@@ -38,7 +46,12 @@ public class ConfigReader {
      * @throws FileNotFoundException if config file is not found
      */
     private void readFile() throws FileNotFoundException {
-        Scanner sc = new Scanner(new File(DEFAULT_CONFIG_PATH));
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new File(DEFAULT_CONFIG_PATH));
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException(CONFIG_NOT_FOUND_ERROR);
+        }
 
         int lineNumber = 0;
 

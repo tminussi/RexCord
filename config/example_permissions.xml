@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rexcord>
-    <role_based_permissions>true</role_based_permissions>
-
     <groups>
         <group id = "admin">
             <users>

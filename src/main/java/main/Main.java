@@ -5,20 +5,14 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
 import rexcord.RexCord;
 import utils.ConfigReader;
+import utils.PermissionReader;
+
 import java.io.FileNotFoundException;
 
 /**
  * Main Class
  */
 public class Main {
-
-    /**
-     * Config missing Error Message
-     */
-    private static final String CONFIG_NOT_FOUND_ERROR
-            = "RexCord: Config file not found. "
-            + "Make sure it is created and located in "
-            + "the correct directory.";
 
     /**
      * Unexpected error
@@ -59,10 +53,13 @@ public class Main {
             // Reads config file
             new ConfigReader();
 
+            // Reads permissions
+            new PermissionReader().readFile();
+
             startClient();
         } catch (FileNotFoundException e) { // Config File doesnt exist
             System.out.println(ERROR_MESSAGE);
-            System.out.println(CONFIG_NOT_FOUND_ERROR);
+            System.out.println(e.getMessage());
             System.out.println(TERMINATING_MESSAGE);
 
         } catch (ArrayIndexOutOfBoundsException e1) { // Bad config
